@@ -3,7 +3,7 @@ Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	2.10.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.10/%{name}-%{version}.tar.bz2
@@ -26,7 +26,8 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
-Requires(post):	GConf2
+Requires(post,preun):	GConf2
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -74,14 +75,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 umask 022
-%gconf_schema_install
-/usr/bin/scrollkeeper-update
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1 ||:
+%gconf_schema_install /etc/gconf/schemas/eog.schemas
+/usr/bin/scrollkeeper-update -q
+/usr/bin/update-desktop-database
+
+%preun
+if [ $1 = 0 ]; then
+	%gconf_schema_uninstall /etc/gconf/schemas/eog.schemas
+fi
 
 %postun
-umask 022
-/usr/bin/scrollkeeper-update
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
+if [ $1 = 0 ]; then
+	umask 022
+	/usr/bin/scrollkeeper-update -q
+	/usr/bin/update-desktop-database
+fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
