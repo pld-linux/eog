@@ -2,36 +2,36 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.4.1
+Version:	2.5.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	a7098a85d0f36591521660cc778ed819
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	4f68eed22c30ba10c9a9ff7c35b875dc
 Patch0:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	eel-devel >= 2.4.0
+BuildRequires:	eel-devel >= 2.5.3
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.3.0
-BuildRequires:	gnome-vfs2-devel >= 2.4.0
+BuildRequires:	gnome-vfs2-devel >= 2.5.3
 BuildRequires:	intltool
-BuildRequires:	libbonobo-devel >= 2.4.0
-BuildRequires:	libbonoboui-devel >= 2.4.0
-BuildRequires:	libgnomeprint-devel >= 2.3.1
-BuildRequires:	libgnomeui-devel >= 2.4.0
-BuildRequires:	libgnomeprintui-devel >= 2.3.1
+BuildRequires:	libbonobo-devel >= 2.5.1
+BuildRequires:	libbonoboui-devel >= 2.5.1
+BuildRequires:	libgnomeprint-devel >= 2.5.0
+BuildRequires:	libgnomeui-devel >= 2.5.1
+BuildRequires:	libgnomeprintui-devel >= 2.5.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-BuildRequires:	librsvg-devel >= 2.4.0
+BuildRequires:	librsvg-devel >= 2.5.0
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	libbonobo >= 2.4.0
+Requires:	libbonobo >= 2.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,9 +50,9 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 
 %build
 %{__libtoolize}
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
 glib-gettextize --copy --force
 intltoolize --copy --force
+%{__aclocal} -I %{_aclocaldir}/gnome2-macros
 %{__autoheader}
 gnome-doc-common
 %{__automake}
