@@ -56,7 +56,6 @@ intltoolize --copy --force
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
-
 %configure \
 	--disable-schemas-install
 %{__make} 
