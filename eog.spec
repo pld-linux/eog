@@ -9,8 +9,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	9c373a1e1355622d253d45da8a4efecc
 Patch0:		%{name}-libtool.patch
-#Patch1:		%{name}-bonobo.patch
-Patch2:		%{name}-locale-names.patch
+Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.7.91
 BuildRequires:	autoconf
@@ -21,8 +20,6 @@ BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-vfs2-devel >= 2.7.91
 BuildRequires:	intltool
 Buildrequires:	libart_lgpl-devel >= 2.3.16
-BuildRequires:	libbonobo-devel >= 2.6.0
-BuildRequires:	libbonoboui-devel >= 2.6.0
 Buildrequires:	libexif-devel >= 1:0.5.12
 Buildrequires:	libglade2-devel >= 1:2.4.0
 BuildRequires:	libgnomeprint-devel >= 2.7.0
@@ -36,7 +33,6 @@ BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	libbonobo >= 2.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -52,8 +48,7 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
-%patch2 -p1
+%patch1 -p1
 
 rm po/no.po
 
