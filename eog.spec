@@ -6,11 +6,6 @@ Version:	0.6
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/eog/%{name}-%{version}.tar.gz
 Source1:	%{name}.gif
 Patch0:		%{name}-am_ac.patch
