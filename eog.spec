@@ -2,20 +2,20 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.5.2
+Version:	2.5.2.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	d32b44ed73138f0780aa617693a5c97b
+# Source0-md5:	35c2ea0c1225322b4880cffb329982f7
 Patch0:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.4.0
+BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	eel-devel >= 2.5.3
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.3.0
+BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-vfs2-devel >= 2.5.3
 BuildRequires:	intltool
 BuildRequires:	libbonobo-devel >= 2.5.1
