@@ -7,7 +7,6 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.2/%{name}-%{version}.tar.bz2
-Source1:	%{name}.gif
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-makefile.patch
 Patch2:		%{name}-libtool.patch
