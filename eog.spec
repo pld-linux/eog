@@ -2,40 +2,37 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	0.6
-Release:	3
+Version:	1.1.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/eog/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
-Patch0:		%{name}-am_ac.patch
-Patch1:		%{name}-am16.patch
-Patch2:		%{name}-ac253.patch
-Patch3:		%{name}-disable_GConf_test.patch
-Patch4:		%{name}-zh_CN.patch
-Patch5:		%{name}-sane-window-size.patch
+Patch0:		%{name}-am.patch
+Patch1:		%{name}-makefile.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf-devel >= 0.12
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-devel
-BuildRequires:	bonobo-devel >= 0.35
-BuildRequires:	gdk-pixbuf-gnome-devel >= 0.9.0
+BuildRequires:	bonobo-activation-devel >= 1.0.3
+BuildRequires:	GConf2-devel >= 1.2.1
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-libs-devel
-BuildRequires:	gnome-print-devel >= 0.25
+BuildRequires:	gnome-vfs2-devel >= 2.0.3
 BuildRequires:	intltool
-BuildRequires:	libglade-gnome-devel
+BuildRequires:	libbonoboui >= 2.0.2
+BuildRequires:	libgnomeprint-devel >= 1.116.0
+BuildRequires:	libgnomeui >= 2.0.4
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
+BuildRequires:	librsvg-devel >= 2.0.1
 BuildRequires:	libtool
-BuildRequires:	oaf-devel >= 0.6.2
-Requires(post):	GConf
+BuildRequires:	popt-devel
+Requires(post): GConf2
+Requires(post): scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
-%define         _sysconfdir     /etc/X11/GNOME
+%define		_prefix				/usr/X11R6
+%define		_sysconfdir		/etc/X11/GNOME2
+%define		_omf_dest_dir	%(scrollkeeper-config --omfdir)
 
 %description
 Eye of GNOME is a tool for viewing/cataloging images.
@@ -51,49 +48,49 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-mv -f ./po/zh_CN.GB2312.po ./po/zh_CN.po && rm -f ./po/zh_CN.GB2312.gm
-%patch5 -p1
 
 %build
 rm -f missing
-%{__gettextize}
-%{__libtoolize}
-xml-i18n-toolize --copy --force
-%{__aclocal} -I %{_aclocaldir}/gnome
+sed -e 's/-ourdir/ourdir/' xmldocs.make >xmldocs.make.tmp
+mv xmldocs.make.tmp xmldocs.make
+glib-gettextize --copy --force
+libtoolize --copy --force
+intltoolize --copy --force
+aclocal -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-bonobo
-%{__make}
+	--enable-platform-gnome-2
+%{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	Graphicsdir=%{_applnkdir}/Graphics
+	omf_dest_dir=%{_omf_dest_dir}/%{name}
 
 %find_lang %{name} --with-gnome
 
+%post
+/usr/bin/scrollkeeper-update
+GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
+
+%postun -p /usr/bin/scrollkeeper-update
+
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%post
-GCONF_CONFIG_SOURCE=xml::%{_sysconfdir}/gconf/gconf.xml.defaults
-export GCONF_CONFIG_SOURCE
-gconftool --makefile-install-rule %{_sysconfdir}/gconf/schemas/eog.schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/gconf/schemas/eog.schemas
-%{_applnkdir}/Graphics/*
-%{_datadir}/idl/*.idl
+%attr(755,root,root) %{_libdir}/eog-image-viewer
+%{_sysconfdir}/gconf/schemas/*
+%{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
-%{_datadir}/gnome/ui/*
-%{_datadir}/oaf/*.oaf
+%{_datadir}/applications/*
+%{_datadir}/gnome-2.0/ui/*
+%{_datadir}/idl/*
+%{_omf_dest_dir}/%{name}
 %{_pixmapsdir}/*
