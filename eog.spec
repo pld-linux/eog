@@ -23,7 +23,7 @@ BuildRequires:	automake
 BuildRequires:	intltool
 BuildRequires:	gettext-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel >= 1.2.3
+BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /usr/bin/scrollkeeper-update
-GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
+GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
 
 %postun
 /usr/bin/scrollkeeper-update
