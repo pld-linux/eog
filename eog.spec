@@ -6,7 +6,7 @@ Version:	1.0.3
 Release:	2
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/2.0.1/sources/eog/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.0/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-makefile.patch
