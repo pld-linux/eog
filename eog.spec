@@ -2,11 +2,11 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	1.1.4
-Release:	2
+Version:	2.2.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.2/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-makefile.patch
@@ -14,21 +14,21 @@ Patch2:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-activation-devel >= 2.1.1
-BuildRequires:	GConf2-devel >= 1.2.1
+BuildRequires:	bonobo-activation-devel >= 2.2.0
+BuildRequires:	GConf2-devel >= 2.2.0
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-vfs2-devel >= 2.1.6
+BuildRequires:	gnome-vfs2-devel >= 2.2.0
 BuildRequires:	intltool
-BuildRequires:	libbonoboui >= 2.1.2
-BuildRequires:	libgnomeprint-devel >= 2.1.6
-BuildRequires:	libgnomeui >= 2.1.1
+BuildRequires:	libbonoboui >= 2.2.0
+BuildRequires:	libgnomeprint-devel >= 2.2.1
+BuildRequires:	libgnomeui >= 2.2.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-BuildRequires:	librsvg-devel >= 2.1.3
+BuildRequires:	librsvg-devel >= 2.2.1
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	Xft-devel >= 2.1-2
-Requires:	bonobo-activation >= 2.1.1
+Requires:	bonobo-activation >= 2.2.0
 Requires(post): GConf2
 Requires(post): scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
