@@ -70,6 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %gconf_schema_install
+/usr/bin/scrollkeeper-update
 
 %postun -p /usr/bin/scrollkeeper-update
 
