@@ -9,8 +9,10 @@ Group(pl):	X11/Aplikacje
 Source0:	ftp://ftp.gnome.org//pub/GNOME/unstable/sources/eog/%{name}-%{version}.tar.gz
 Source1:	%{name}.gif
 URL:		http://www.gnome.org/
-BuildRequires:	gettext-devel
+BuildRequires:	bonobo-devel
 BuildRequires:	gdk-pixbuf-devel >= 0.7.0
+BuildRequires:	gettext-devel
+BuildRequires:	GConf-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -24,7 +26,7 @@ Eye of GNOME is a tool for viewing/cataloging images.
 
 %build
 gettextize --copy --force
-%configure \
+%configure2_13 \
 	--with-bonobo
 %{__make}
 		
