@@ -1,5 +1,6 @@
 Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
+Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	0.6
 Release:	1
@@ -41,6 +42,9 @@ Eye of GNOME is a tool for viewing/cataloging images.
 %description -l pl
 Eye of GNOME (Oko GNOME) jest narzêdziem do ogl±dania/katalogowania
 obrazków.
+
+%description -l pt_BR
+Aplicativo para visualizar imagens chamado Eye of GNOME.
 
 %prep
 %setup -q
