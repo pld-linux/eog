@@ -1,6 +1,6 @@
-diff -urN eog-2.8.1.orig/eog.desktop.in eog-2.8.1/eog.desktop.in
---- eog-2.8.1.orig/eog.desktop.in	2004-11-17 11:56:12.489393728 +0100
-+++ eog-2.8.1/eog.desktop.in	2004-11-17 11:57:02.164841912 +0100
+diff -urN eog-2.8.1.orig/eog.desktop.in.in eog-2.8.1/eog.desktop.in.in
+--- eog-2.8.1.orig/eog.desktop.in.in	2004-11-17 11:56:12.489393728 +0100
++++ eog-2.8.1/eog.desktop.in.in	2004-11-17 11:57:02.164841912 +0100
 @@ -8,7 +8,7 @@
  StartupNotify=true
  Terminal=false
