@@ -1,0 +1,12 @@
+diff -urN eog-0.6.org/viewer/Makefile.am eog-0.6/viewer/Makefile.am
+--- eog-0.6.org/viewer/Makefile.am	Sat Jan 12 17:53:53 2002
++++ eog-0.6/viewer/Makefile.am	Sat Jan 12 17:54:08 2002
+@@ -77,7 +77,7 @@
+ 
+ BUILT_SOURCES=$(CORBA_SOURCE)
+ 
+-CLEANFILES += $(BUILT_SOURCES)
++CLEANFILES = $(BUILT_SOURCES)
+ 
+ oafdir = $(datadir)/oaf
+ oaf_in_files = GNOME_EOG.oaf.in
