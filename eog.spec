@@ -2,12 +2,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.3.4
+Version:	2.3.5
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	b9a589bff91f067e94e5c425cacf4ee0
+# Source0-md5:	e845d82535563801a21db7a5c10fd5dd
 Patch0:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.2.0
@@ -15,6 +15,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	eel-devel >= 2.3.3
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gnome-vfs2-devel >= 2.3.3
 BuildRequires:	intltool
 BuildRequires:	libbonobo-devel >= 2.3.1-4
@@ -47,15 +48,14 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %patch0 -p1
 
 %build
-rm -f missing
-sed -e 's/-ourdir/ourdir/' xmldocs.make >xmldocs.make.tmp
-mv xmldocs.make.tmp xmldocs.make
-glib-gettextize --copy --force
 %{__libtoolize}
-intltoolize --copy --force
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
-%{__autoconf}
+glib-gettextize --copy --force
+intltoolize --copy --force
+%{__autoheader}
+gnome-doc-common
 %{__automake}
+%{__autoconf}
 %configure \
 	--disable-schemas-install
 %{__make} 
