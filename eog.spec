@@ -10,9 +10,10 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.t
 # Source0-md5:	b9a589bff91f067e94e5c425cacf4ee0
 Patch0:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
+BuildRequires:	GConf2-devel >= 2.2.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	GConf2-devel >= 2.2.0
+BuildRequires:	eel-devel >= 2.3.3
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-vfs2-devel >= 2.3.3
 BuildRequires:	intltool
@@ -26,7 +27,6 @@ BuildRequires:	librsvg-devel >= 2.2.1
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
-BuildRequires:	eel-devel >= 2.3.3
 Requires:	libbonobo >= 2.3.1-4
 Requires(post): GConf2
 Requires(post): scrollkeeper
@@ -87,8 +87,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/*
 %{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
-%{_datadir}/applications/*
 %{_datadir}/gnome-2.0/ui/*
 %{_datadir}/idl/*
 %{_omf_dest_dir}/%{name}
+%{_desktopdir}/*
 %{_pixmapsdir}/*
