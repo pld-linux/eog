@@ -22,6 +22,7 @@ BuildRequires:	libbonobo-devel >= 2.3.1-4
 BuildRequires:	libbonoboui-devel >= 2.3.3-2
 BuildRequires:	libgnomeprint-devel >= 2.2.1
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	libgnomeprintui-devel >= 2.2.1
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	librsvg-devel >= 2.2.1
