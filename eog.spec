@@ -2,13 +2,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.3.0
+Version:	2.3.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-makefile.patch
-Patch1:		%{name}-libtool.patch
+Patch0:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -45,7 +44,6 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -f missing
@@ -59,15 +57,14 @@ intltoolize --copy --force
 %{__automake}
 
 %configure \
-	--enable-platform-gnome-2
+	--disable-schemas-install
 %{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	omf_dest_dir=%{_omf_dest_dir}/%{name} 
+	DESTDIR=$RPM_BUILD_ROOT 
 
 %find_lang %{name} --with-gnome
 
