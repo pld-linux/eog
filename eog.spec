@@ -34,7 +34,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_prefix			/usr/X11R6
 %define		_sysconfdir		/etc/X11/GNOME2
 %define		_omf_dest_dir	%(scrollkeeper-config --omfdir)
-%define		_serverdir		/usr/lib/bonobo/servers
+%define		_bonobo_server_dir		/usr/lib/bonobo/servers
 
 %description
 Eye of GNOME is a tool for viewing/cataloging images.
@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	omf_dest_dir=%{_omf_dest_dir}/%{name} \
-	serverdir=%{_serverdir}
+	serverdir=%{_bonobo_server_dir}
 
 %find_lang %{name} --with-gnome
 
@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/eog-image-viewer
 %{_sysconfdir}/gconf/schemas/*
-%{_serverdir}/*
+%{_bonobo_server_dir}/*
 %{_datadir}/%{name}
 %{_datadir}/applications/*
 %{_datadir}/gnome-2.0/ui/*
