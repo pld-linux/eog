@@ -1,0 +1,33 @@
+diff -Nrc -x *~ eog-0.6.orig/src/window.c eog-0.6/src/window.c
+*** eog-0.6.orig/src/window.c	Wed Feb  7 11:13:37 2001
+--- eog-0.6/src/window.c	Tue Apr 10 00:07:21 2001
+***************
+*** 785,790 ****
+--- 785,791 ----
+  	char *fname;
+  	gboolean free_fname;
+  	GtkWidget *view;
++ 	int width;
+  
+  	g_return_val_if_fail (window != NULL, FALSE);
+  	g_return_val_if_fail (IS_WINDOW (window), FALSE);
+***************
+*** 812,817 ****
+--- 813,829 ----
+  		fname = _("Eye of Gnome");
+  
+  	gtk_window_set_title (GTK_WINDOW (window), fname);
++ 
++ 	width = 45 + MIN (gdk_pixbuf_get_width (image->pixbuf),
++ 			  ((gdk_screen_width () - 45) * 0.8));
++ 	width = MAX (width, 261);
++ 
++ 	gtk_widget_set_usize (GTK_WIDGET (window),
++ 			      width,
++ 			      120 + MIN (gdk_pixbuf_get_height (image->pixbuf),
++ 					 ((gdk_screen_height () - 120) * 0.8)));
++ 	/* printf ("%d %d\n", gdk_pixbuf_get_width (image->pixbuf),
++ 		gdk_pixbuf_get_height (image->pixbuf) ); */
+  
+  	if (free_fname)
+  		g_free (fname);
