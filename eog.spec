@@ -12,24 +12,28 @@ Patch0:		%{name}-am.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 1.2.1
-BuildRequires:	gnome-vfs2-devel >= 2.0.3
-BuildRequires:	libgnomeprint-devel >= 1.116.0
-BuildRequires:	libgnomeui >= 2.0.4
-BuildRequires:	libbonoboui >= 2.0.2
-BuildRequires:	bonobo-activation-devel >= 1.0.3
-BuildRequires:	librsvg-devel >= 2.0.1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	intltool
+BuildRequires:	bonobo-activation-devel >= 1.0.3
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-vfs2-devel >= 2.0.3
+BuildRequires:	intltool
+BuildRequires:	libbonoboui >= 2.0.2
+BuildRequires:	libgnomeprint-devel >= 1.116.0
+BuildRequires:	libgnomeui >= 2.0.4
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
+BuildRequires:	librsvg-devel >= 2.0.1
 BuildRequires:	libtool
 BuildRequires:	popt-devel
+BuildConflicts:	bonobo-activation-devel >= 2.1.0
+Requires(post):	GConf2
+Requires(post):	scrollkeeper
+Conflicts:	bonobo-activation >= 2.1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define         _sysconfdir     /etc/X11/GNOME2
+%define		_sysconfdir	/etc/X11/GNOME2
 %define		_omf_dest_dir	%(scrollkeeper-config --omfdir)
 
 %description
@@ -74,8 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 /usr/bin/scrollkeeper-update
 GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
 
-%postun
-/usr/bin/scrollkeeper-update
+%postun -p /usr/bin/scrollkeeper-update
 
 %clean
 rm -rf $RPM_BUILD_ROOT
