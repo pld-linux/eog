@@ -15,7 +15,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	eel-devel >= 2.7.92
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.4.0
+BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.7.92
 BuildRequires:	intltool
 Buildrequires:	libart_lgpl-devel >= 2.3.16
@@ -52,7 +52,7 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %{__libtoolize}
 glib-gettextize --copy --force
 intltoolize --copy --force
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__aclocal}
 %{__autoheader}
 gnome-doc-common
 %{__automake}
