@@ -2,7 +2,7 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	0.118.0
+Version:	1.0.0
 Release:	0.2
 License:	GPL
 Group:		X11/Applications
@@ -10,19 +10,19 @@ Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/eog/%{name}-%{version}
 Source1:	%{name}.gif
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel
-BuildRequires:	gnome-vfs2-devel >= 1.9.12
-BuildRequires:	libgnomeprint-devel >= 1.112.0
-BuildRequires:	libgnomeui >= 1.115.0
-BuildRequires:	libbonoboui >= 1.115.0
-BuildRequires:	bonobo-activation-devel >= 0.9.7
+BuildRequires:	GConf2-devel >= 1.2.0
+BuildRequires:	gnome-vfs2-devel >= 2.0.0
+BuildRequires:	libgnomeprint-devel >= 1.115.0
+BuildRequires:	libgnomeui >= 2.0.0
+BuildRequires:	libbonoboui >= 2.0.0
+BuildRequires:	bonobo-activation-devel >= 1.0.0
 BuildRequires:	librsvg-devel >= 1.1.6
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	intltool
 BuildRequires:	gettext-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel
+BuildRequires:	libpng-devel >= 1.2.3
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,7 +49,7 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 rm -f missing
 sed -e 's/-ourdir/ourdir/' xmldocs.make >xmldocs.make.tmp
 mv xmldocs.make.tmp xmldocs.make
-gettextize --copy --force
+glib-gettextize --copy --force
 libtoolize --copy --force
 intltoolize --copy --force
 aclocal -I %{_aclocaldir}/gnome2-macros
