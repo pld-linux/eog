@@ -2,13 +2,14 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.5.4
+Version:	2.5.5
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	6acd36ba88a9bfbb24e7a0ce93b9bfe2
+# Source0-md5:	7f2f2cbe2533bbb204e77b60a62da309
 Patch0:		%{name}-libtool.patch
+Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	autoconf
@@ -18,8 +19,11 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gnome-vfs2-devel >= 2.5.6
 BuildRequires:	intltool
+Buildrequires:	libart_lgpl-devel >= 2.2.0
 BuildRequires:	libbonobo-devel >= 2.5.1
 BuildRequires:	libbonoboui-devel >= 2.5.1
+Buildrequires:	libexif-devel >= 0.5.12
+Buildrequires:	libglade2-devel >= 2.3.1
 BuildRequires:	libgnomeprint-devel >= 2.5.0
 BuildRequires:	libgnomeui-devel >= 2.5.1
 BuildRequires:	libgnomeprintui-devel >= 2.5.0
@@ -47,6 +51,9 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
+mv po/{no,nb}.po
 
 %build
 %{__libtoolize}
@@ -65,7 +72,8 @@ gnome-doc-common
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 %find_lang %{name} --with-gnome
 
