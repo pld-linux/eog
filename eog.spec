@@ -11,6 +11,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.t
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-bonobo.patch
 Patch2:		%{name}-locale-names.patch
+Patch3:		%{name}-libexif069.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.6.1
 BuildRequires:	autoconf
@@ -54,6 +55,7 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 mv po/{no,nb}.po
 
