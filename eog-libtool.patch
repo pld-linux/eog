@@ -1,0 +1,11 @@
+diff -urN eog-1.1.3.orig/configure.in eog-1.1.3/configure.in
+--- eog-1.1.3.orig/configure.in	Fri Dec 20 22:59:19 2002
++++ eog-1.1.3/configure.in	Fri Dec 20 22:59:45 2002
+@@ -22,6 +22,7 @@
+ dnl ===============================================================================
+ 
+ AC_PROG_CC
++AC_PROG_LIBTOOL
+ AC_ISC_POSIX
+ AC_HEADER_STDC
+ AC_ARG_PROGRAM
