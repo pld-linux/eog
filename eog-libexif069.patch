@@ -1,0 +1,65 @@
+diff -urN aa/eog-2.6.1/acconfig.h eog-2.6.1/acconfig.h
+--- aa/eog-2.6.1/acconfig.h	2003-12-04 07:12:15.000000000 +0100
++++ eog-2.6.1/acconfig.h	2004-07-02 12:39:20.901033344 +0200
+@@ -21,4 +21,5 @@
+ #undef GCONF_CONFIG_SOURCE
+ #undef INSTALL_GCONF_CONFIG_SOURCE
+ #undef HAVE_EXIF
++#undef HAVE_EXIF_0_6_9
+ #undef HAVE_LIBJPEG
+diff -urN aa/eog-2.6.1/configure.in eog-2.6.1/configure.in
+--- aa/eog-2.6.1/configure.in	2004-04-21 20:02:40.000000000 +0200
++++ eog-2.6.1/configure.in	2004-07-02 12:37:29.358990312 +0200
+@@ -62,8 +62,10 @@
+ 
+ AC_ARG_WITH(libexif, [  --without-libexif	  disable special EXIF support])
+ have_exif=no
++have_exif_0_6_9=no
+ if test x$with_libexif != xno; then
+     PKG_CHECK_MODULES(EXIF, libexif >= $LIBEXIF_REQUIRED, have_exif=yes, have_exif=no)
++    PKG_CHECK_MODULES(EXIF, libexif >= 0.6.9, have_exif_0_6_9=yes, have_exif_0_6_9=no)
+ fi 
+ 
+ if test "x$have_exif" = "xyes"; then
+@@ -71,6 +73,10 @@
+   EOG_MODULES="$EOG_MODULES libexif >= $LIBEXIF_REQUIRED"
+ fi
+ 
++if test "x$have_exif_0_6_9" = "xyes"; then
++  AC_DEFINE([HAVE_EXIF_0_6_9],[1])
++fi
++
+ dnl ============== semi optional libjpeg support ====================
+ AC_ARG_WITH(libjpeg, [  --without-libjpeg	  disable special JPEG support])
+   have_jpeg=no
+diff -urN aa/eog-2.6.1/libeog/eog-info-view.c eog-2.6.1/libeog/eog-info-view.c
+--- aa/eog-2.6.1/libeog/eog-info-view.c	2004-02-15 16:33:11.000000000 +0100
++++ eog-2.6.1/libeog/eog-info-view.c	2004-07-02 12:31:49.878599176 +0200
+@@ -246,6 +246,7 @@
+ 	EogInfoView *view;
+ 	EogInfoViewPrivate *priv;
+ 	char *path;
++	char b[1024];
+ 
+ 	view = EOG_INFO_VIEW (data);
+ 	priv = view->priv;
+@@ -255,11 +256,19 @@
+ 	path = g_hash_table_lookup (priv->id_path_hash, GINT_TO_POINTER (entry->tag));
+ 
+ 	if (path != NULL) {
++#ifdef HAVE_EXIF_0_6_9
++		set_row_data (store, path, exif_tag_get_name (entry->tag), exif_entry_get_value (entry, b, sizeof(b)));	
++#else
+ 		set_row_data (store, path, exif_tag_get_name (entry->tag), exif_entry_get_value (entry));	
++#endif
+ 	}
+ 	else {
+ 		path = set_row_data (store, NULL, 
++#ifdef HAVE_EXIF_0_6_9
++				     exif_tag_get_name (entry->tag), exif_entry_get_value (entry, b, sizeof(b)));	
++#else
+ 				     exif_tag_get_name (entry->tag), exif_entry_get_value (entry));	
++#endif
+ 
+ 		g_hash_table_insert (priv->id_path_hash,
+ 				     GINT_TO_POINTER (entry->tag),
