@@ -1,8 +1,0 @@
-diff -urN eog-2.2.0.orig/Makefile.am eog-2.2.0/Makefile.am
---- eog-2.2.0.orig/Makefile.am	Tue Jan 28 10:17:44 2003
-+++ eog-2.2.0/Makefile.am	Tue Jan 28 10:17:59 2003
-@@ -42,4 +42,3 @@
- icon_DATA = gnome-eog.png
- 
- install-data-local:
--	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(top_builddir)/eog.schemas
