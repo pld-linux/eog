@@ -6,7 +6,7 @@ Version:	2.8.2
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.8/%{name}-%{version}.tar.bz2
 # Source0-md5:	1edf5f0e48fe17468c2d67c56e14c437
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-desktop.patch
@@ -18,9 +18,9 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.8.3
 BuildRequires:	intltool
-Buildrequires:	libart_lgpl-devel >= 2.3.16
-Buildrequires:	libexif-devel >= 1:0.5.12
-Buildrequires:	libglade2-devel >= 1:2.4.1
+BuildRequires:	libart_lgpl-devel >= 2.3.16
+BuildRequires:	libexif-devel >= 1:0.5.12
+BuildRequires:	libglade2-devel >= 1:2.4.1
 BuildRequires:	libgnomeprint-devel >= 2.8.1
 BuildRequires:	libgnomeui-devel >= 2.8.0
 BuildRequires:	libgnomeprintui-devel >= 2.8.1
@@ -73,6 +73,9 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 umask 022
 %gconf_schema_install
@@ -83,9 +86,6 @@ umask 022
 umask 022
 /usr/bin/scrollkeeper-update
 [ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
