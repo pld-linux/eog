@@ -1,12 +1,11 @@
-diff -urN aa/eog-2.5.5/configure.in eog-2.5.5/configure.in
---- aa/eog-2.5.5/configure.in	2004-02-16 19:35:45.000000000 +0100
-+++ eog-2.5.5/configure.in	2004-02-17 02:16:36.374541328 +0100
-@@ -41,7 +41,7 @@
+--- eog-2.7.1/configure.in.orig	2004-08-20 21:15:06.188897096 +0200
++++ eog-2.7.1/configure.in	2004-08-20 21:15:35.343464928 +0200
+@@ -39,7 +39,7 @@
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE")
  AC_SUBST(GETTEXT_PACKAGE)
  
--ALL_LINGUAS="af am ar az be bg bn ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu id is it ja kn ko lt lv mk ml mn ms ne nl nn no pa pl pt pt_BR ro ru sl sk sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
-+ALL_LINGUAS="af am ar az be bg bn ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu id is it ja kn ko lt lv mk ml mn ms nb ne nl nn pa pl pt pt_BR ro ru sl sk sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
+-ALL_LINGUAS="af am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu id is it ja kn ko lt lv mk ml mn ms nb ne nl nn no or pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
++ALL_LINGUAS="af am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi fr ga gl gu he hi hr hu id is it ja kn ko lt lv mk ml mn ms nb ne nl nn or pa pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta th tk tr uk vi wa zh_CN zh_TW"
  AM_GLIB_GNU_GETTEXT
  AC_PROG_INTLTOOL
  
