@@ -2,15 +2,14 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.2.1
+Version:	2.3.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.2/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
-Patch0:		%{name}-am.patch
-Patch1:		%{name}-makefile.patch
-Patch2:		%{name}-libtool.patch
+Patch0:		%{name}-makefile.patch
+Patch1:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -28,6 +27,7 @@ BuildRequires:	librsvg-devel >= 2.2.1
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	Xft-devel >= 2.1-2
+BuildRequires:	eel-devel >= 2.2.0
 Requires:	bonobo-activation >= 2.2.0
 Requires(post): GConf2
 Requires(post): scrollkeeper
@@ -47,7 +47,6 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 rm -f missing
@@ -86,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/eog-image-viewer
+%attr(755,root,root) %{_libdir}/eog-collection-view
 %{_sysconfdir}/gconf/schemas/*
 %{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
