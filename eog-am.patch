@@ -1,7 +1,17 @@
-diff -urN eog-1.0.1.orig/libeog/Makefile.am eog-1.0.1/libeog/Makefile.am
---- eog-1.0.1.orig/libeog/Makefile.am	Wed Jun  5 01:54:46 2002
-+++ eog-1.0.1/libeog/Makefile.am	Sun Jun 23 11:23:49 2002
-@@ -54,7 +54,7 @@
+diff -urN eog-1.1.0.orig/collection/Makefile.am eog-1.1.0/collection/Makefile.am
+--- eog-1.1.0.orig/collection/Makefile.am	Sun Oct 13 23:44:47 2002
++++ eog-1.1.0/collection/Makefile.am	Sun Oct 13 23:49:52 2002
+@@ -98,5 +98,5 @@
+ uidir = $(datadir)/gnome-2.0/ui
+ ui_DATA = eog-collection-view-ui.xml
+ 
+-CLEANFILES += $(EVOLUTION_GENERATED) $(BUILT_SOURCES)
++CLEANFILES = $(EVOLUTION_GENERATED) $(BUILT_SOURCES)
+ EXTRA_DIST = $(ui_DATA) $(server_in_files) eog-collection-marshal.list
+diff -urN eog-1.1.0.orig/libeog/Makefile.am eog-1.1.0/libeog/Makefile.am
+--- eog-1.1.0.orig/libeog/Makefile.am	Sun Oct 13 23:44:47 2002
++++ eog-1.1.0/libeog/Makefile.am	Sun Oct 13 23:48:30 2002
+@@ -67,7 +67,7 @@
  @INTLTOOL_SERVER_RULE@
  
  BUILT_SOURCES=$(CORBA_SOURCES)
@@ -10,10 +20,10 @@ diff -urN eog-1.0.1.orig/libeog/Makefile.am eog-1.0.1/libeog/Makefile.am
  
  EXTRA_DIST = $(server_in_files)
  
-diff -urN eog-1.0.1.orig/viewer/Makefile.am eog-1.0.1/viewer/Makefile.am
---- eog-1.0.1.orig/viewer/Makefile.am	Wed Jun  5 01:54:50 2002
-+++ eog-1.0.1/viewer/Makefile.am	Sun Jun 23 11:25:58 2002
-@@ -38,7 +38,7 @@
+diff -urN eog-1.1.0.orig/viewer/Makefile.am eog-1.1.0/viewer/Makefile.am
+--- eog-1.1.0.orig/viewer/Makefile.am	Sun Oct 13 23:44:47 2002
++++ eog-1.1.0/viewer/Makefile.am	Sun Oct 13 23:48:30 2002
+@@ -36,7 +36,7 @@
  #	 eog-embeddable.c	\
  #	 eog-embeddable.h	\
  #	 eog-embeddable-view.c	\
