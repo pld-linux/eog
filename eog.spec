@@ -16,7 +16,7 @@ BuildRequires:	libgnomeprint-devel >= 1.115.0
 BuildRequires:	libgnomeui >= 2.0.0
 BuildRequires:	libbonoboui >= 2.0.0
 BuildRequires:	bonobo-activation-devel >= 1.0.0
-BuildRequires:	librsvg-devel >= 1.1.6
+BuildRequires:	librsvg-devel >= 2.0.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	intltool
