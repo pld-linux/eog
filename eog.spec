@@ -3,7 +3,7 @@ Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	1.1.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/1.1/%{name}-%{version}.tar.bz2
@@ -13,10 +13,10 @@ Patch1:		%{name}-makefile.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-activation-devel >= 2.1.0
+BuildRequires:	bonobo-activation-devel >= 2.1.0-3
 BuildRequires:	GConf2-devel >= 1.2.1
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-vfs2-devel >= 2.0.3
+BuildRequires:	gnome-vfs2-devel >= 2.1.3-3
 BuildRequires:	intltool
 BuildRequires:	libbonoboui >= 2.1.0
 BuildRequires:	libgnomeprint-devel >= 2.1.1
@@ -31,9 +31,10 @@ Requires(post): GConf2
 Requires(post): scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix				/usr/X11R6
+%define		_prefix			/usr/X11R6
 %define		_sysconfdir		/etc/X11/GNOME2
 %define		_omf_dest_dir	%(scrollkeeper-config --omfdir)
+%define		_serverdir		/usr/lib/bonobo/servers
 
 %description
 Eye of GNOME is a tool for viewing/cataloging images.
@@ -69,7 +70,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	omf_dest_dir=%{_omf_dest_dir}/%{name}
+	omf_dest_dir=%{_omf_dest_dir}/%{name} \
+	serverdir=%{_serverdir}
 
 %find_lang %{name} --with-gnome
 
@@ -87,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/eog-image-viewer
 %{_sysconfdir}/gconf/schemas/*
-%{_libdir}/bonobo/servers/*
+%{_serverdir}/*
 %{_datadir}/%{name}
 %{_datadir}/applications/*
 %{_datadir}/gnome-2.0/ui/*
