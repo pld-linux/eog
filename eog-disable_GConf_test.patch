@@ -1,0 +1,21 @@
+--- eog-0.6/Makefile.in.org	Fri Mar  9 20:04:11 2001
++++ eog-0.6/Makefile.in	Fri Mar  9 20:04:26 2001
+@@ -499,9 +499,6 @@
+ 
+ @XML_I18N_MERGE_DESKTOP_RULE@
+ 
+-install-data-local:
+-	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) gconftool --makefile-install-rule $(top_srcdir)/$(schema_DATA)
+-
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+--- eog-0.6/Makefile.am.org	Fri Mar  9 20:03:43 2001
++++ eog-0.6/Makefile.am	Fri Mar  9 20:04:03 2001
+@@ -24,6 +24,3 @@
+ 
+ icondir = $(datadir)/pixmaps
+ icon_DATA = gnome-eog.png
+-
+-install-data-local:
+-	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) gconftool --makefile-install-rule $(top_srcdir)/$(schema_DATA)
