@@ -77,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
 %{_applnkdir}/Graphics/*
-%{_datadir/idl/*.idl
+%{_datadir}/idl/*.idl
 %{_datadir}/%{name}
 %{_datadir}/gnome/ui
 %{_datadir}/oaf/*.oaf
