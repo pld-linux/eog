@@ -62,7 +62,7 @@ rm -f missing
 %{__gettextize}
 %{__libtoolize}
 xml-i18n-toolize --copy --force
-aclocal -I %{_aclocaldir}/gnome
+%{__aclocal} -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
 %configure \
