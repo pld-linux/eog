@@ -2,40 +2,40 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.5.6
+Version:	2.5.90
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	629808ceaa4f836deb1eba118cca90c1
+# Source0-md5:	a238b5c1ad4f46acff5b119338484457
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.5.0
+BuildRequires:	GConf2-devel >= 2.5.90
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	eel-devel >= 2.5.6
+BuildRequires:	eel-devel >= 2.5.90
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.5.6
+BuildRequires:	gnome-vfs2-devel >= 2.5.90
 BuildRequires:	intltool
 Buildrequires:	libart_lgpl-devel >= 2.2.0
-BuildRequires:	libbonobo-devel >= 2.5.1
+BuildRequires:	libbonobo-devel >= 2.6.0
 BuildRequires:	libbonoboui-devel >= 2.5.1
 Buildrequires:	libexif-devel >= 0.5.12
 Buildrequires:	libglade2-devel >= 2.3.1
 BuildRequires:	libgnomeprint-devel >= 2.5.0
-BuildRequires:	libgnomeui-devel >= 2.5.1
+BuildRequires:	libgnomeui-devel >= 2.5.90
 BuildRequires:	libgnomeprintui-devel >= 2.5.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-BuildRequires:	librsvg-devel >= 2.5.0
+BuildRequires:	librsvg-devel >= 2.6.0
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	libbonobo >= 2.5.0
+Requires:	libbonobo >= 2.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
