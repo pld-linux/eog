@@ -9,6 +9,7 @@ Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/eog/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
 Patch0:		%{name}-am.patch
+Patch1:		%{name}-makefile.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 1.2.0
 BuildRequires:	gnome-vfs2-devel >= 2.0.0
@@ -44,6 +45,7 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
