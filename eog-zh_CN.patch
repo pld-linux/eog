@@ -1,0 +1,22 @@
+--- eog-0.6/configure.in.gbk	Tue Jun 26 14:18:34 2001
++++ eog-0.6/configure.in	Tue Jun 26 14:19:00 2001
+@@ -22,7 +22,7 @@
+ 
+ GNOME_COMPILE_WARNINGS
+ 
+-ALL_LINGUAS="az ca cs da de el es et fi fr ga gl hu it ja ko lt nl no pl pt_BR ro ru sl sv tr uk zh_CN.GB2312 zh_TW.Big5"
++ALL_LINGUAS="az ca cs da de el es et fi fr ga gl hu it ja ko lt nl no pl pt_BR ro ru sl sv tr uk zh_CN zh_TW.Big5"
+ AM_GNU_GETTEXT
+ 
+ AC_SUBST(CFLAGS)
+--- eog-0.6/configure.gbk	Tue Jun 26 14:18:41 2001
++++ eog-0.6/configure	Tue Jun 26 14:18:51 2001
+@@ -2216,7 +2216,7 @@
+   fi
+ 
+ 
+-ALL_LINGUAS="az ca cs da de el es et fi fr ga gl hu it ja ko lt nl no pl pt_BR ro ru sl sv tr uk zh_CN.GB2312 zh_TW.Big5"
++ALL_LINGUAS="az ca cs da de el es et fi fr ga gl hu it ja ko lt nl no pl pt_BR ro ru sl sv tr uk zh_CN zh_TW.Big5"
+ echo $ac_n "checking for working const""... $ac_c" 1>&6
+ echo "configure:2222: checking for working const" >&5
+ if eval "test \"`echo '$''{'ac_cv_c_const'+set}'`\" = set"; then
