@@ -2,36 +2,36 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.6.1
+Version:	2.7.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	a7207082b9034e9e24ec7adde744c3a9
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	8081319151a829d43c2f8463a53354ea
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-bonobo.patch
 Patch2:		%{name}-locale-names.patch
 Patch3:		%{name}-libexif069.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.6.1
+BuildRequires:	GConf2-devel >= 2.7.3
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	eel-devel >= 2.6.1
+BuildRequires:	eel-devel >= 2.7.1
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.4.0
-BuildRequires:	gnome-vfs2-devel >= 2.6.1
+BuildRequires:	gnome-vfs2-devel >= 2.7.3
 BuildRequires:	intltool
 Buildrequires:	libart_lgpl-devel >= 2.3.16
 BuildRequires:	libbonobo-devel >= 2.6.0
 BuildRequires:	libbonoboui-devel >= 2.6.0
 Buildrequires:	libexif-devel >= 1:0.5.12
-Buildrequires:	libglade2-devel >= 1:2.3.6
-BuildRequires:	libgnomeprint-devel >= 2.6.0
-BuildRequires:	libgnomeui-devel >= 2.6.0
-BuildRequires:	libgnomeprintui-devel >= 2.6.0
+Buildrequires:	libglade2-devel >= 1:2.4.0
+BuildRequires:	libgnomeprint-devel >= 2.7.0
+BuildRequires:	libgnomeui-devel >= 2.7.2
+BuildRequires:	libgnomeprintui-devel >= 2.7.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-BuildRequires:	librsvg-devel >= 1:2.6.4
+BuildRequires:	librsvg-devel >= 1:2.7.2
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
@@ -94,13 +94,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/eog-image-viewer
-%attr(755,root,root) %{_libdir}/eog-collection-view
 %{_sysconfdir}/gconf/schemas/*
-%{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
 %{_datadir}/gnome-2.0/ui/*
-%{_datadir}/idl/*
 %{_omf_dest_dir}/%{name}
 %{_desktopdir}/*
 %{_pixmapsdir}/*
