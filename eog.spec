@@ -3,19 +3,19 @@ Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	1.0.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/eog/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/2.0.1/sources/eog/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-makefile.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 1.2.1
-BuildRequires:	gnome-vfs2-devel >= 2.0.2
-BuildRequires:	libgnomeprint-devel >= 1.115.0
-BuildRequires:	libgnomeui >= 2.0.3
-BuildRequires:	libbonoboui >= 2.0.1
+BuildRequires:	gnome-vfs2-devel >= 2.0.3
+BuildRequires:	libgnomeprint-devel >= 1.116.0
+BuildRequires:	libgnomeui >= 2.0.4
+BuildRequires:	libbonoboui >= 2.0.2
 BuildRequires:	bonobo-activation-devel >= 1.0.3
 BuildRequires:	librsvg-devel >= 2.0.1
 BuildRequires:	autoconf
