@@ -6,7 +6,7 @@ Version:	0.118.0
 Release:	0.2
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.gnome.org/gnome/pre-gnome2//sources/eog/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/eog/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
 Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
