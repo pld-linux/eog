@@ -2,34 +2,34 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	0.6
-Release:	2
+Version:	0.118.0
+Release:	0.2
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/eog/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/gnome/pre-gnome2//sources/eog/%{name}-%{version}.tar.bz2
 Source1:	%{name}.gif
-Patch0:		%{name}-am_ac.patch
+Patch0:		%{name}-am.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf-devel >= 0.12
+BuildRequires:	GConf2-devel
+BuildRequires:	gnome-vfs2-devel >= 1.9.12
+BuildRequires:	libgnomeprint-devel >= 1.112.0
+BuildRequires:	libgnomeui >= 1.115.0
+BuildRequires:	libbonoboui >= 1.115.0
+BuildRequires:	bonobo-activation-devel >= 0.9.7
+BuildRequires:	librsvg-devel >= 1.1.6
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-devel
-BuildRequires:	bonobo-devel >= 0.35
-BuildRequires:	gdk-pixbuf-devel >= 0.9.0
-BuildRequires:	gettext-devel
-BuildRequires:	gnome-libs-devel
-BuildRequires:	gnome-print-devel >= 0.25
 BuildRequires:	intltool
-BuildRequires:	libglade-devel
+BuildRequires:	gettext-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
-BuildRequires:	oaf-devel >= 0.6.2
+BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
-%define         _sysconfdir     /etc/X11/GNOME
+%define         _sysconfdir     /etc/X11/GNOME2
+%define		_omf_dest_dir	%(scrollkeeper-config --omfdir)
 
 %description
 Eye of GNOME is a tool for viewing/cataloging images.
@@ -47,24 +47,33 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 
 %build
 rm -f missing
+sed -e 's/-ourdir/ourdir/' xmldocs.make >xmldocs.make.tmp
+mv xmldocs.make.tmp xmldocs.make
 gettextize --copy --force
 libtoolize --copy --force
-xml-i18n-toolize --copy --force
-aclocal -I %{_aclocaldir}/gnome
+intltoolize --copy --force
+aclocal -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-bonobo
-%{__make}
+	--enable-platform-gnome-2
+%{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	Graphicsdir=%{_applnkdir}/Graphics
+	omf_dest_dir=%{_omf_dest_dir}/%{name}
 
 %find_lang %{name} --with-gnome
+
+%post
+/usr/bin/scrollkeeper-update
+GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
+
+%postun
+/usr/bin/scrollkeeper-update
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,9 +82,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%{_applnkdir}/Graphics/*
-%{_datadir}/idl/*.idl
-%{_datadir}/%{name}
-%{_datadir}/gnome/ui/*
-%{_datadir}/oaf/*.oaf
-%{_pixmapsdir}/%{name}
+%{_sysconfdir}/gconf/schemas/*
+%{_libdir}/bonobo/servers/*
+%{_datadir}/applications/*
+%{_datadir}/gnome-2.0/ui/*
+%{_datadir}/idl/*
+%{_omf_dest_dir}/%{name}
+%{_pixmapsdir}/*
