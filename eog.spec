@@ -3,7 +3,7 @@ Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	0.6
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.gnome.org/pub/GNOME/unstable/sources/eog/%{name}-%{version}.tar.gz
@@ -64,8 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	Graphicsdir=%{_applnkdir}/Graphics
 
-gzip -9nf AUTHORS ChangeLog NEWS README
-
 %find_lang %{name} --with-gnome
 
 %clean
@@ -73,11 +71,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
 %{_applnkdir}/Graphics/*
 %{_datadir}/idl/*.idl
 %{_datadir}/%{name}
-%{_datadir}/gnome/ui
+%{_datadir}/gnome/ui/*
 %{_datadir}/oaf/*.oaf
 %{_pixmapsdir}/%{name}
