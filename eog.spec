@@ -15,12 +15,12 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bonobo-devel
 BuildRequires:	bonobo-devel >= 0.35
-BuildRequires:	gdk-pixbuf-devel >= 0.9.0
+BuildRequires:	gdk-pixbuf-gnome-devel >= 0.9.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel
 BuildRequires:	gnome-print-devel >= 0.25
 BuildRequires:	intltool
-BuildRequires:	libglade-devel
+BuildRequires:	libglade-gnome-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
