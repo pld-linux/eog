@@ -29,8 +29,8 @@ BuildRequires:	librsvg-devel >= 2.2.1
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xft-devel >= 2.1.2
-Requires(post): GConf2
-Requires(post): scrollkeeper
+Requires(post):	GConf2
+Requires(post):	scrollkeeper
 Requires:	libbonobo >= 2.3.1-4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
