@@ -11,14 +11,14 @@ Patch0:		%{name}-libtool.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-activation-devel >= 2.2.0
 BuildRequires:	GConf2-devel >= 2.2.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-vfs2-devel >= 2.2.0
 BuildRequires:	intltool
-BuildRequires:	libbonoboui >= 2.2.0
+BuildRequires:	libbonobo-devel >= 2.3.1-4
+BuildRequires:	libbonoboui-devel >= 2.2.0
 BuildRequires:	libgnomeprint-devel >= 2.2.1
-BuildRequires:	libgnomeui >= 2.2.0
+BuildRequires:	libgnomeui-devel >= 2.2.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	librsvg-devel >= 2.2.1
@@ -26,7 +26,7 @@ BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	Xft-devel >= 2.1-2
 BuildRequires:	eel-devel >= 2.2.0
-Requires:	bonobo-activation >= 2.2.0
+Requires:	libbonobo >= 2.3.1-4
 Requires(post): GConf2
 Requires(post): scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
