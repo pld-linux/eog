@@ -24,7 +24,7 @@ BuildRequires:	intltool
 Buildrequires:	libart_lgpl-devel >= 2.3.16
 BuildRequires:	libbonobo-devel >= 2.6.0
 BuildRequires:	libbonoboui-devel >= 2.6.0
-Buildrequires:	libexif-devel >= 0.5.12
+Buildrequires:	libexif-devel >= 1:0.5.12
 Buildrequires:	libglade2-devel >= 1:2.3.6
 BuildRequires:	libgnomeprint-devel >= 2.6.0
 BuildRequires:	libgnomeui-devel >= 2.6.0
