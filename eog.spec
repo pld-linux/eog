@@ -2,7 +2,7 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	1.1.1
+Version:	1.1.2
 Release:	1
 License:	GPL
 Group:		X11/Applications
@@ -74,8 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang %{name} --with-gnome
 
 %post
-/usr/bin/scrollkeeper-update
-GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
+%gconf_schema_install
 
 %postun -p /usr/bin/scrollkeeper-update
 
