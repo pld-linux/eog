@@ -1,0 +1,23 @@
+diff -aurN eog-2.10.2.orig/configure.in eog-2.10.2/configure.in
+--- eog-2.10.2.orig/configure.in	2005-06-28 00:36:33.000000000 +0200
++++ eog-2.10.2/configure.in	2005-06-28 21:53:24.000000000 +0200
+@@ -60,7 +60,6 @@
+ have_old_libexif=no
+ if test x$with_libexif != xno; then
+     PKG_CHECK_MODULES(EXIF, libexif >= $LIBEXIF_REQUIRED, have_exif=yes, have_exif=no)
+-    PKG_CHECK_MODULES(EXIF, libexif = $LIBEXIF_REQUIRED, have_old_libexif=yes, have_old_libexif=no)
+ fi 
+ 
+ if test "x$have_exif" = "xyes"; then
+@@ -68,11 +67,6 @@
+   EOG_MODULES="$EOG_MODULES libexif >= $LIBEXIF_REQUIRED"
+ fi
+ 
+-if test "x$have_old_libexif" = "xyes"; then
+-  AC_DEFINE(HAVE_OLD_LIBEXIF,1)
+-	EOG_MODULES="$EOG_MODULES libexif = $LIBEXIF_REQUIRED"
+-fi
+-
+ dnl ============== semi optional libjpeg support ====================
+ AC_ARG_WITH(libjpeg, [  --without-libjpeg	  disable special JPEG support])
+   have_jpeg=no
