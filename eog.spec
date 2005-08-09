@@ -29,6 +29,7 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper
 BuildRequires:	xft-devel >= 2.1.2
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
