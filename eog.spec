@@ -2,15 +2,14 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.10.2
+Version:	2.12.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	09884ebaf4d520195093b2a516252579
+Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.12/%{name}-%{version}.tar.bz2
+# Source0-md5:	dc248ded932a03fe79c533d4cfab4d28
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-old_exif_check.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf
@@ -19,15 +18,18 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	intltool
+BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.17
 BuildRequires:	libexif-devel >= 1:0.6.12
 BuildRequires:	libglade2-devel >= 1:2.5.1
-BuildRequires:	libgnomeui-devel >= 2.10.0-2
+BuildRequires:	libgnomeprintui-devel
+BuildRequires:	libgnomeui-devel >= 2.11.2-2
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper
 BuildRequires:	xft-devel >= 2.1.2
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
@@ -48,7 +50,6 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -93,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/eog.schemas
 %{_datadir}/%{name}
 %{_omf_dest_dir}/%{name}
 %{_desktopdir}/*
