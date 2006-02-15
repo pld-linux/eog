@@ -1,0 +1,105 @@
+diff -aurN eog-2.13.90.orig/libeog/eog-image.c eog-2.13.90/libeog/eog-image.c
+--- eog-2.13.90.orig/libeog/eog-image.c	2006-01-21 04:32:28.000000000 +0100
++++ eog-2.13.90/libeog/eog-image.c	2006-01-31 00:19:25.380754000 +0100
+@@ -909,8 +909,10 @@
+ 	g_return_val_if_fail (EOG_IS_IMAGE (img), FALSE);
+ 
+ 	priv = EOG_IMAGE (img)->priv;
+-
++	
++#ifdef DEBUG
+ 	g_print ("eog-image_load.c\n");
++#endif
+ 
+ 	if (data2read == 0) {
+ 		/* nothing to read */
+@@ -944,9 +946,9 @@
+ 	else {
+ 		success = eog_image_real_load (img, data2read, job, error);
+ 	}
+-
++#ifdef DEBUG
+ 	g_print ("load success: %i\n", success);
+-
++#endif
+ 	/* perform required transformation */
+ 	if (eog_image_needs_transformation (img)) {
+ 		if (job != NULL) {
+diff -aurN eog-2.13.90.orig/libeog/eog-image-list.c eog-2.13.90/libeog/eog-image-list.c
+--- eog-2.13.90.orig/libeog/eog-image-list.c	2006-01-07 05:54:57.000000000 +0100
++++ eog-2.13.90/libeog/eog-image-list.c	2006-01-31 00:20:04.280754000 +0100
+@@ -753,16 +753,17 @@
+ 	g_return_if_fail (EOG_IS_IMAGE_LIST (list));
+ 	
+ 	priv = list->priv;
+-	
++#ifdef DEBUG	
+ 	g_print ("n_images: %i/%u\n", priv->n_images, g_list_length (priv->store));
++#endif
+ 	for (it = priv->store; it != NULL; it = it->next) {
+ 		gint width, height;
+ 		EogImage *img = EOG_IMAGE (it->data);
+ 		char *uri_str = eog_image_get_uri_for_display (img);
+ 		eog_image_get_size (img, &width, &height);
+-		
++#ifdef DEBUG	
+ 		g_print ("%3i %s (%i/%i)\n", i++, uri_str, width, height);
+-		
++#endif		
+ 		g_free (uri_str);
+ 	}
+ }
+diff -aurN eog-2.13.90.orig/libeog/eog-info-view.c eog-2.13.90/libeog/eog-info-view.c
+--- eog-2.13.90.orig/libeog/eog-info-view.c	2006-01-07 05:54:57.000000000 +0100
++++ eog-2.13.90/libeog/eog-info-view.c	2006-01-31 00:20:35.140754000 +0100
+@@ -114,7 +114,9 @@
+ 		ExifData *ed;
+ 
+ 		ed = eog_image_get_exif_information (image);
++#ifdef DEBUG		
+ 		g_print ("Show exif data\n");
++#endif
+ 		eog_info_view_exif_show_data (EOG_INFO_VIEW_EXIF (view->priv->exif_view), ed);
+ 		if (ed != NULL) {
+ 			gtk_widget_show_all (gtk_widget_get_parent (GTK_WIDGET (view->priv->exif_view)));
+diff -aurN eog-2.13.90.orig/libeog/eog-job.c eog-2.13.90/libeog/eog-job.c
+--- eog-2.13.90.orig/libeog/eog-job.c	2006-01-07 05:54:57.000000000 +0100
++++ eog-2.13.90/libeog/eog-job.c	2006-01-31 00:21:05.700754000 +0100
+@@ -112,9 +112,9 @@
+ 	EogJobPrivate *priv;
+ 
+ 	priv = EOG_JOB (object)->priv;
+-
++#ifdef DEBUG
+ 	g_print ("Job %.3u: disposing ...\n", priv->id);
+-
++#endif
+ 	if (priv->mutex != NULL) {
+ 		g_mutex_lock (priv->mutex);
+ 		if (priv->data != NULL)
+@@ -132,8 +132,9 @@
+ 		g_mutex_free (priv->mutex);
+ 		priv->mutex = NULL;
+ 	}
+-
++#ifdef DEBUG
+ 	g_print ("Job %.3u: disposing end\n", priv->id);
++#endif
+ }
+ 
+ static void
+diff -aurN eog-2.13.90.orig/shell/eog-window.c eog-2.13.90/shell/eog-window.c
+--- eog-2.13.90.orig/shell/eog-window.c	2006-01-16 22:58:33.000000000 +0100
++++ eog-2.13.90/shell/eog-window.c	2006-01-31 00:22:04.470754000 +0100
+@@ -2872,9 +2872,9 @@
+ 		/* make sure window is usable */
+ 		width  = CLAMP (width, 100, screen_width);
+ 		height = CLAMP (height, 100, screen_height);
+-	
++#ifdef DEBUG	
+ 		g_print ("setting window size: %i/%i\n", width, height);
+-		
++#endif		
+ 		gtk_window_set_default_size (GTK_WINDOW (window), width, height);
+ 	}
+ #endif
