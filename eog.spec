@@ -2,12 +2,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.14.2
+Version:	2.15.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	7653ae35509bd799bccfa4e6d819882a
+Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.15/%{name}-%{version}.tar.bz2
+# Source0-md5:	b6a42a76e096ee2bde92d503fe1c9438
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
@@ -15,15 +15,15 @@ BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.14.0
-BuildRequires:	intltool
+BuildRequires:	gnome-common >= 2.12.0
+BuildRequires:	gnome-vfs2-devel >= 2.15.1
+BuildRequires:	intltool >= 0.35
 BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.17
 BuildRequires:	libexif-devel >= 1:0.6.12
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeprintui-devel
-BuildRequires:	libgnomeui-devel >= 2.14.0
+BuildRequires:	libgnomeui-devel >= 2.15.1
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
@@ -33,7 +33,7 @@ BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomeui >= 2.14.0
+Requires:	libgnomeui >= 2.15.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -52,8 +52,8 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %patch1 -p1
 
 %build
+
 %{__libtoolize}
-%{__glib_gettextize}
 %{__intltoolize}
 %{__aclocal}
 %{__autoheader}
@@ -61,7 +61,8 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %{__automake}
 %{__autoconf}
 %configure \
-	--disable-schemas-install
+	--disable-schemas-install \
+	--disable-scrollkeeper
 %{__make}
 
 %install
@@ -71,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/{tk,ug}
 
 %find_lang %{name} --with-gnome
 
