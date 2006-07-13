@@ -2,12 +2,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.15.3
+Version:	2.15.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	29a9768a41dce2823e93c8de60b638e3
+# Source0-md5:	6005450c992cf3f94b3fe3c001e010e1
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
@@ -16,15 +16,15 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-desktop-devel >= 2.15.2
-BuildRequires:	gnome-vfs2-devel >= 2.15.1
+BuildRequires:	gnome-desktop-devel >= 2.15.4
+BuildRequires:	gnome-vfs2-devel >= 2.15.3
 BuildRequires:	intltool >= 0.35
 BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.17
 BuildRequires:	libexif-devel >= 1:0.6.12
-BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeprintui-devel
-BuildRequires:	libgnomeui-devel >= 2.15.1
+BuildRequires:	libgnomeui-devel >= 2.15.2
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
@@ -34,7 +34,7 @@ BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomeui >= 2.15.1
+Requires:	libgnomeui >= 2.15.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -53,7 +53,6 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %patch1 -p1
 
 %build
-
 %{__libtoolize}
 %{__intltoolize}
 %{__aclocal}
@@ -61,6 +60,7 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %{__gnome_doc_common}
 %{__automake}
 %{__autoconf}
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--disable-schemas-install \
 	--disable-scrollkeeper
