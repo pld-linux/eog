@@ -95,5 +95,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/eog.schemas
 %{_datadir}/%{name}
 %{_omf_dest_dir}/%{name}
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
