@@ -2,12 +2,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl):	Oko GNOME - przegl±darka obrazków
 Summary(pt_BR):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.16.1.1
+Version:	2.16.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/eog/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	336e411374580edf848576dad901a6e3
+# Source0-md5:	e2457242d14a2bee9eee7c907ef27e8c
 Patch0:		%{name}-libtool.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
@@ -17,14 +17,14 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-desktop-devel >= 2.16.1
-BuildRequires:	gnome-vfs2-devel >= 2.16.1
+BuildRequires:	gnome-vfs2-devel >= 2.16.2
 BuildRequires:	intltool >= 0.35
 BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.17
 BuildRequires:	libexif-devel >= 1:0.6.13
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeprintui-devel >= 2.12.1
-BuildRequires:	libgnomeui-devel >= 2.16.0
+BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
@@ -33,7 +33,7 @@ BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomeui >= 2.16.0
+Requires:	libgnomeui >= 2.16.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
