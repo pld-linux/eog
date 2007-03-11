@@ -5,7 +5,7 @@ diff -aurN eog-2.13.90.orig/eog.desktop.in.in eog-2.13.90/eog.desktop.in.in
  StartupNotify=true
  Terminal=false
  Type=Application
--Categories=GNOME;GTK;Application;Graphics;RasterGraphics;Viewer;
+-Categories=GNOME;GTK;Graphics;RasterGraphics;Viewer;
 +Categories=GTK;GNOME;Graphics;Viewer;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=EOG
