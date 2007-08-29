@@ -1,6 +1,6 @@
-diff -aurN eog-2.13.90.orig/eog.desktop.in.in eog-2.13.90/eog.desktop.in.in
---- eog-2.13.90.orig/eog.desktop.in.in	2006-01-26 06:17:59.000000000 +0100
-+++ eog-2.13.90/eog.desktop.in.in	2006-01-31 00:04:10.020754000 +0100
+diff -aurN eog-2.13.90.orig/data/eog.desktop.in.in eog-2.13.90/data/eog.desktop.in.in
+--- eog-2.13.90.orig/data/eog.desktop.in.in	2006-01-26 06:17:59.000000000 +0100
++++ eog-2.13.90/data/eog.desktop.in.in	2006-01-31 00:04:10.020754000 +0100
 @@ -8,7 +8,7 @@
  StartupNotify=true
  Terminal=false
