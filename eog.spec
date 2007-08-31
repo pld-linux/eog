@@ -16,6 +16,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.18.0
+BuildRequires:	gnome-icon-theme >= 2.19.91
 BuildRequires:	gnome-desktop-devel >= 2.18.2
 BuildRequires:	gnome-vfs2-devel >= 2.18.1
 BuildRequires:	intltool >= 0.35.5
