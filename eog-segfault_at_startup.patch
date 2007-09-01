@@ -1,0 +1,12 @@
+--- trunk/src/eog-application.c	2007/08/27 18:43:54	4002
++++ trunk/src/eog-application.c	2007/08/28 10:16:11	4007
+@@ -249,7 +249,8 @@
+ {
+ 	EogWindow *new_window = NULL;
+ 
+-	new_window = eog_application_get_uri_window (application, 
++	if (uri_list != NULL)
++		new_window = eog_application_get_uri_window (application, 
+ 						     (GnomeVFSURI *) uri_list->data);
+ 
+ 	if (new_window != NULL) {
