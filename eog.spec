@@ -3,13 +3,14 @@ Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	2.19.91
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.19/%{name}-%{version}.tar.bz2
 # Source0-md5:	720886cd50616b9e8f7997355878113f
 Patch0:		%{name}-codegen.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-segfault_at_startup.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.18.0.1
 BuildRequires:	autoconf
@@ -65,6 +66,7 @@ Pliki nagłówkowe eog.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
