@@ -2,12 +2,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.20.2
-Release:	2
+Version:	2.20.3
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	8b704805411199a57822e653f457502f
+# Source0-md5:	980b54c00fa3860e37d10c679c80ed71
 Patch0:		%{name}-codegen.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/eog/
@@ -32,6 +32,8 @@ BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
+# support for --with-omf in find-lang.sh
+BuildRequires:	rpm-build >= 4.4.9-10
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	shared-mime-info >= 0.20
@@ -77,6 +79,9 @@ Pliki nagłówkowe eog.
 %patch0 -p1
 %patch1 -p1
 
+sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+mv po/sr\@{Latn,latin}.po
+
 %build
 %{__libtoolize}
 %{__intltoolize}
@@ -97,9 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -124,7 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/eog
 %{_sysconfdir}/gconf/schemas/eog.schemas
 %{_datadir}/%{name}
-%{_omf_dest_dir}/%{name}
 %{_desktopdir}/eog.desktop
 %{_iconsdir}/hicolor/*/*/*
 
