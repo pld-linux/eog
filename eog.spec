@@ -79,7 +79,7 @@ Pliki nagłówkowe eog.
 %patch0 -p1
 %patch1 -p1
 
-sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+%{__sed} -i -e "s#sr\@Latn#sr\@latin#" po/LINGUAS
 mv po/sr\@{Latn,latin}.po
 
 %build
