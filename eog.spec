@@ -2,33 +2,33 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.21.4
+Version:	2.21.90
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	3c8342acaeb9dfd65510df8defc0874b
+# Source0-md5:	161cf9bb110c06174e09b3f9260a542e
 Patch0:		%{name}-codegen.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/eog/
-BuildRequires:	GConf2-devel >= 2.21.0
+BuildRequires:	GConf2-devel >= 2.21.90
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.21.4
+BuildRequires:	gnome-desktop-devel >= 2.21.91
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-icon-theme >= 2.20.0
-BuildRequires:	gnome-vfs2-devel >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	intltool >= 0.36.2
+BuildRequires:	gnome-vfs2-devel >= 2.21.90
+BuildRequires:	gtk+2-devel >= 2:2.12.5
+BuildRequires:	intltool >= 0.37.0
 BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.21.5
+BuildRequires:	libgnomeui-devel >= 2.21.90
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
@@ -60,13 +60,13 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %package devel
 Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
-Group:		Development/Libraries
+Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.21.0
-Requires:	gnome-vfs2-devel >= 2.20.0
-Requires:	gtk+2-devel >= 2:2.12.0
+Requires:	GConf2-devel >= 2.21.90
+Requires:	gnome-vfs2-devel >= 2.21.90
+Requires:	gtk+2-devel >= 2:2.12.5
 Requires:	libglade2-devel >= 1:2.6.2
-Requires:	libgnomeui-devel >= 2.21.5
+Requires:	libgnomeui-devel >= 2.21.90
 
 %description devel
 Header files for eog.
@@ -133,4 +133,4 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/eog-2.20
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/eog.pc
