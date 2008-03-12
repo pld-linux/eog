@@ -2,33 +2,33 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.20.4
+Version:	2.22.0
 Release:	1
-License:	GPL v2
+License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	f9c923e1e09caa8e6f764ae8242f8d61
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	53928253e8f0265b6e7de80bfc51ab3a
 Patch0:		%{name}-codegen.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/eog/
-BuildRequires:	GConf2-devel >= 2.20.0
+BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	dbus-glib-devel >= 0.71
-BuildRequires:	exempi-devel >= 1.99.2
+BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 2.22.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-icon-theme >= 2.20.0
-BuildRequires:	gnome-vfs2-devel >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	intltool >= 0.36.2
+BuildRequires:	gnome-vfs2-devel >= 2.22.0
+BuildRequires:	gtk+2-devel >= 2:2.12.5
+BuildRequires:	intltool >= 0.37.0
 BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.20.0
+BuildRequires:	libgnomeui-devel >= 2.22.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
@@ -42,7 +42,7 @@ Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
-Requires:	libgnomeui >= 2.20.0
+Requires:	libgnomeui >= 2.22.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -60,13 +60,13 @@ Aplicativo para visualizar imagens chamado Eye of GNOME.
 %package devel
 Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
-Group:		Development/Libraries
+Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	GConf2-devel >= 2.20.0
-Requires:	gnome-vfs2-devel >= 2.20.0
-Requires:	gtk+2-devel >= 2:2.12.0
+Requires:	GConf2-devel >= 2.22.0
+Requires:	gnome-vfs2-devel >= 2.22.0
+Requires:	gtk+2-devel >= 2:2.12.5
 Requires:	libglade2-devel >= 1:2.6.2
-Requires:	libgnomeui-devel >= 2.20.0
+Requires:	libgnomeui-devel >= 2.22.0
 
 %description devel
 Header files for eog.
@@ -79,16 +79,16 @@ Pliki nagłówkowe eog.
 %patch0 -p1
 %patch1 -p1
 
-%{__sed} -i -e "s#sr\@Latn#sr\@latin#" po/LINGUAS
-mv po/sr\@{Latn,latin}.po
+%{__sed} -i -e "s#sr@Latn#sr@latin#" po/LINGUAS
+mv po/sr@{Latn,latin}.po
 
 %build
+%{__gnome_doc_common}
 %{__libtoolize}
 %{__intltoolize}
 %{__aclocal}
-%{__autoheader}
-%{__gnome_doc_common}
 %{__automake}
+%{__autoheader}
 %{__autoconf}
 %configure \
 	--disable-schemas-install \
@@ -133,4 +133,4 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/eog-2.20
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/eog.pc
