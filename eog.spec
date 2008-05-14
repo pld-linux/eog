@@ -1,13 +1,14 @@
+%bcond_without	apidocs		# disable API documentation
 Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.22.1
+Version:	2.23.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	ca40ada77bda9b396809e08782f5d718
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.23/%{name}-%{version}.tar.bz2
+# Source0-md5:	858b3f68804dd77512cd9ec37734d354
 Patch0:		%{name}-codegen.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/eog/
@@ -22,6 +23,7 @@ BuildRequires:	gnome-desktop-devel >= 2.22.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-icon-theme >= 2.20.0
 BuildRequires:	gnome-vfs2-devel >= 2.22.0
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
 BuildRequires:	gtk+2-devel >= 2:2.12.5
 BuildRequires:	intltool >= 0.37.0
 BuildRequires:	lcms-devel
@@ -74,6 +76,18 @@ Header files for eog.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe eog.
 
+%package apidocs
+Summary:	Eye of GNOME API documentation
+Summary(pl.UTF-8):	Dokumentacja API Eye of GNOME
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+Eye of GNOME API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API Eye of GNOME.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -83,6 +97,7 @@ Pliki nagłówkowe eog.
 mv po/sr@{Latn,latin}.po
 
 %build
+%{?with_apidocs:%{__gtkdocize}}
 %{__gnome_doc_common}
 %{__libtoolize}
 %{__intltoolize}
@@ -91,8 +106,10 @@ mv po/sr@{Latn,latin}.po
 %{__autoheader}
 %{__autoconf}
 %configure \
+	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
 	--disable-schemas-install \
-	--disable-scrollkeeper
+	--disable-scrollkeeper \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -128,9 +145,24 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/eog.schemas
 %{_datadir}/%{name}
 %{_desktopdir}/eog.desktop
+%dir %{_libdir}/eog
+%dir %{_libdir}/eog/plugins
+# buggy soname generation, uses .so.0.0.0
+%{_libdir}/eog/plugins/fullscreen.eog-plugin
+%attr(755,root,root) %{_libdir}/eog/plugins/libfullscreen.so*
+%{_libdir}/eog/plugins/reload.eog-plugin
+%attr(755,root,root) %{_libdir}/eog/plugins/libreload.so*
+%{_libdir}/eog/plugins/statusbar-date.eog-plugin
+%attr(755,root,root) %{_libdir}/eog/plugins/libstatusbar-date.so*
 %{_iconsdir}/hicolor/*/*/*
 
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/eog-2.20
 %{_pkgconfigdir}/eog.pc
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/eog
+%endif
