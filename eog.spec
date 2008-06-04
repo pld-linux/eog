@@ -19,7 +19,7 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.22.0
+BuildRequires:	gnome-desktop-devel >= 2.23.3
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-icon-theme >= 2.20.0
 BuildRequires:	gnome-vfs2-devel >= 2.22.0
