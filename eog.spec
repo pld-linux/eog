@@ -24,7 +24,7 @@ BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-icon-theme >= 2.20.0
 BuildRequires:	gnome-vfs2-devel >= 2.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
-BuildRequires:	gtk+2-devel >= 2:2.12.5
+BuildRequires:	gtk+2-devel >= 2:2.13.1
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.19
