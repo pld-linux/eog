@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.24.3.1
+Version:	2.26.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	8c303bc4e10f88c7bbd18ecf539731fe
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.26/%{name}-%{version}.tar.bz2
+# Source0-md5:	5d513046f80bc989e715243d8cee2825
 Patch0:		%{name}-codegen.patch
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -21,32 +21,32 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 2.24.0
+BuildRequires:	gnome-desktop-devel >= 2.26.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-icon-theme >= 2.24.0
-BuildRequires:	gnome-vfs2-devel >= 2.24.0
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
-BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	gtk+2-devel >= 2:2.16.0
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	lcms-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libexif-devel >= 1:0.6.14
-BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
+BuildRequires:	libxml2-devel >= 1:2.7.0
 BuildRequires:	pkgconfig >= 0.9.0
+BuildRequires:	python-pygobject-devel >= 2.16.0
+BuildRequires:	python-pygtk-devel >= 2:2.14.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	sed >= 4.0
 BuildRequires:	shared-mime-info >= 0.50
+BuildRequires:	zlib-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
-Requires:	libgnomeui >= 2.24.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,10 +67,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.24.0
-Requires:	gnome-vfs2-devel >= 2.24.0
-Requires:	gtk+2-devel >= 2:2.14.0
-Requires:	libglade2-devel >= 1:2.6.2
-Requires:	libgnomeui-devel >= 2.24.0
+Requires:	gtk+2-devel >= 2:2.16.0
 
 %description devel
 Header files for eog.
