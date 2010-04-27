@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.30.0
+Version:	2.30.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	0cd409d2b5de8f4981a89f4740febf47
+# Source0-md5:	b9ea1f6e28c3f1890792d847f23ee82f
 Patch0:		%{name}-codegen.patch
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -25,7 +25,7 @@ BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 2.26.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-icon-theme >= 2.24.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
+BuildRequires:	gtk+2-devel >= 2:2.20.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	lcms-devel
@@ -68,7 +68,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	GConf2-devel >= 2.24.0
-Requires:	gtk+2-devel >= 2:2.16.0
+Requires:	gtk+2-devel >= 2:2.20.0
 
 %description devel
 Header files for eog.
@@ -107,6 +107,7 @@ rm po/en@shaw.po
 	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
 	--disable-schemas-install \
 	--disable-scrollkeeper \
+	--disable-silent-rules \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
