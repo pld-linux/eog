@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.30.2
-Release:	3
+Version:	2.32.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	2f7fdf9392f24229fd82c53e8465f998
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.32/%{name}-%{version}.tar.bz2
+# Source0-md5:	8c28ad389d52e7044c596ca3c81de5a4
 Patch0:		%{name}-codegen.patch
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -21,6 +21,7 @@ BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 2.26.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
@@ -29,9 +30,9 @@ BuildRequires:	gtk+2-devel >= 2:2.20.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	lcms-devel
-BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libjpeg-devel
+BuildRequires:	librsvg-devel >= 2.26.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.7.0
 BuildRequires:	pkgconfig >= 0.9.0
