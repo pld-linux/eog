@@ -138,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/eog
 %dir %{_libdir}/eog
+%dir %{_libdir}/eog/girepository-1.0
 %{_libdir}/eog/girepository-1.0/Eog-3.0.typelib
 %dir %{_libdir}/eog/plugins
 # buggy soname generation, uses .so.0.0.0
