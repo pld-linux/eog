@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	2.91.91
+Version:	2.91.92
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	c1bc0a9287418a3de4618f3db7f5d289
+# Source0-md5:	6e3f40a057c4ab6b998c6083eb8ee812
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -25,14 +25,14 @@ BuildRequires:	gnome-desktop3-devel >= 2.91.90
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-icon-theme >= 2.91.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 0.1.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 2.91.92
 BuildRequires:	gtk+3-devel >= 3.0.2
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	lcms-devel
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libjpeg-devel
-BuildRequires:	libpeas-gtk-devel >= 0.7.2
+BuildRequires:	libpeas-gtk-devel >= 0.7.4
 BuildRequires:	librsvg-devel >= 2.26.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.7.0
@@ -47,7 +47,8 @@ Requires(post,postun):	glib2 >= 1:.2.26.0
 Requires(post,postun):	scrollkeeper
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	gsettings-desktop-schemas >= 0.1.0
+Requires:	gnome-icon-theme >= 2.91.0
+Requires:	gsettings-desktop-schemas >= 2.91.92
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
