@@ -41,7 +41,6 @@ BuildRequires:	python-pygtk-devel >= 2:2.14.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
-BuildRequires:	sed >= 4.0
 BuildRequires:	shared-mime-info >= 0.50
 BuildRequires:	zlib-devel
 Requires(post,postun):	desktop-file-utils
@@ -57,7 +56,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Eye of GNOME is a tool for viewing/cataloging images.
 
 %description -l pl.UTF-8
-Eye of GNOME (Oko GNOME) jest narzędziem do oglądania/katalogowania
+Eye of GNOME (Oko GNOME) jest narzędziem do oglądania i katalogowania
 obrazków.
 
 %description -l pt_BR.UTF-8
@@ -92,8 +91,6 @@ Dokumentacja API Eye of GNOME.
 %prep
 %setup -q
 %patch0 -p1
-sed -i s#^en@shaw## po/LINGUAS
-rm po/en@shaw.po
 
 %build
 %{?with_apidocs:%{__gtkdocize}}
@@ -119,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
 
 %find_lang %{name} --with-gnome --with-omf
 
