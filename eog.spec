@@ -21,7 +21,7 @@ BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop3-devel >= 2.91.90
+BuildRequires:	gnome-desktop-devel >= 2.91.90
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-icon-theme >= 2.91.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
