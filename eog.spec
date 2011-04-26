@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.0.0
+Version:	3.0.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	b9d6faa9c7485df5ace37e0548641893
+# Source0-md5:	71b52e7c03c93300998a0db336fdbd55
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
