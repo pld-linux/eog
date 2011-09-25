@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	3.1.92
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.1/%{name}-%{version}.tar.xz
@@ -116,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
+install -d $RPM_BUILD_ROOT%{_datadir}/eog/plugins
 
 %find_lang %{name} --with-gnome --with-omf
 
