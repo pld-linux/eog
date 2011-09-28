@@ -6,30 +6,29 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.0.2
+Version:	3.2.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	6d41804e81235bc3b85534712c30c5b8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.2/%{name}-%{version}.tar.xz
+# Source0-md5:	f9c0d4f549473d1ed2b79a90abb187ce
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.29.4
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.0.0
+BuildRequires:	gnome-desktop-devel >= 3.1.90
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gnome-icon-theme >= 2.91.0
+BuildRequires:	gnome-icon-theme >= 3.0.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.0.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.1.0
 BuildRequires:	gtk+3-devel >= 3.0.2
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	lcms-devel
+BuildRequires:	lcms2-devel
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpeas-gtk-devel >= 1.0.0
@@ -41,13 +40,15 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 BuildRequires:	shared-mime-info >= 0.50
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires(post,postun):	glib2 >= 1:.2.26.0
+Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	scrollkeeper
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	gnome-icon-theme >= 2.91.0
-Requires:	gsettings-desktop-schemas >= 3.0.0
+Requires:	gnome-icon-theme >= 3.0.0
+Requires:	gsettings-desktop-schemas >= 3.1.0
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -115,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
+install -d $RPM_BUILD_ROOT%{_datadir}/eog/plugins
 
 %find_lang %{name} --with-gnome --with-omf
 
