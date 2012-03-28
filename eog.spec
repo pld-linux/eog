@@ -6,26 +6,26 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.2.2
+Version:	3.4.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	66d2c1d8d250a37e18f3fbf696642214
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.4/%{name}-%{version}.tar.xz
+# Source0-md5:	019b550ff01d77a78cc45b6d0881cf86
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.29.4
+BuildRequires:	glib2-devel >= 1:2.31.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.1.90
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-icon-theme >= 3.0.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.1.0
-BuildRequires:	gtk+3-devel >= 3.0.2
+BuildRequires:	gtk+3-devel >= 3.3.6
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	lcms2-devel
@@ -69,7 +69,7 @@ Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.0.2
+Requires:	gtk+3-devel >= 3.3.6
 
 %description devel
 Header files for eog.
@@ -102,7 +102,7 @@ Dokumentacja API Eye of GNOME.
 %{__autoheader}
 %{__autoconf}
 %configure \
-	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
+	%{__enable_disable apidocs gtk-doc} \
 	--disable-schemas-compile \
 	--disable-scrollkeeper \
 	--disable-silent-rules \
