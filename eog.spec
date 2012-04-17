@@ -6,26 +6,26 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.4.0
+Version:	3.4.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	019b550ff01d77a78cc45b6d0881cf86
+# Source0-md5:	4d082c6df54a8494c56c72bce6646659
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.31.0
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.1.90
+BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gnome-icon-theme >= 3.0.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.1.0
-BuildRequires:	gtk+3-devel >= 3.3.6
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
+BuildRequires:	gtk+3-devel >= 3.4.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	lcms2-devel
@@ -48,7 +48,7 @@ Requires(post,postun):	scrollkeeper
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	gnome-icon-theme >= 3.0.0
-Requires:	gsettings-desktop-schemas >= 3.1.0
+Requires:	gsettings-desktop-schemas >= 3.4.0
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -69,7 +69,7 @@ Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.3.6
+Requires:	gtk+3-devel >= 3.4.0
 
 %description devel
 Header files for eog.
