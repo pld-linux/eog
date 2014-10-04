@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.12.2
+Version:	3.14.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	a47f4a40b34aead0cd3fb3d6f8b4dd75
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	8a05ba55231497901541e3e0d0ab8e43
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
@@ -20,10 +20,9 @@ BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-desktop-devel >= 3.2.0
-BuildRequires:	gnome-icon-theme >= 3.0.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
-BuildRequires:	gtk+3-devel >= 3.10.6
+BuildRequires:	gtk+3-devel >= 3.11.6
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.16}
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	lcms2-devel
@@ -44,7 +43,6 @@ BuildRequires:	zlib-devel
 Requires(post,postun):	glib2 >= 1:2.38.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	gnome-icon-theme >= 3.0.0
 Requires:	gsettings-desktop-schemas >= 3.4.0
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
@@ -66,7 +64,7 @@ Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.10.6
+Requires:	gtk+3-devel >= 3.11.6
 
 %description devel
 Header files for eog.
@@ -111,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/eog/plugins/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/eog{/plugins,}/*.la
 install -d $RPM_BUILD_ROOT%{_datadir}/eog/plugins
 
 %find_lang %{name} --with-gnome
@@ -138,6 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/eog/girepository-1.0/Eog-3.0.typelib
 %dir %{_libdir}/eog/plugins
 # buggy soname generation, uses .so.0.0.0
+%attr(755,root,root) %{_libdir}/eog/libeog.so*
 %{_libdir}/eog/plugins/fullscreen.plugin
 %attr(755,root,root) %{_libdir}/eog/plugins/libfullscreen.so*
 %{_libdir}/eog/plugins/reload.plugin
