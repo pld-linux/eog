@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.14.0
+Version:	3.14.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.14/%{name}-%{version}.tar.xz
-# Source0-md5:	8a05ba55231497901541e3e0d0ab8e43
+# Source0-md5:	d946655a31edc2526dd6776c2b5cf129
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
@@ -22,7 +22,7 @@ BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
-BuildRequires:	gtk+3-devel >= 3.11.6
+BuildRequires:	gtk+3-devel >= 3.14.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.16}
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	lcms2-devel
@@ -64,7 +64,7 @@ Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.11.6
+Requires:	gtk+3-devel >= 3.14.0
 
 %description devel
 Header files for eog.
