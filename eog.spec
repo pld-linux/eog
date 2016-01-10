@@ -1,13 +1,13 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# disable API documentation
-#
+
 Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
 Version:	3.18.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.18/%{name}-%{version}.tar.xz
@@ -77,6 +77,9 @@ Summary:	Eye of GNOME API documentation
 Summary(pl.UTF-8):	Dokumentacja API Eye of GNOME
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 Eye of GNOME API documentation.
