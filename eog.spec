@@ -26,25 +26,33 @@ BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
 BuildRequires:	gtk+3-devel >= 3.14.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.16}
 BuildRequires:	intltool >= 0.50.1
-BuildRequires:	lcms2-devel
+BuildRequires:	lcms2-devel >= 2
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpeas-gtk-devel >= 1.0.0
 BuildRequires:	librsvg-devel >= 2.36.2
-BuildRequires:	libtool >= 2.2.6
-BuildRequires:	pkgconfig >= 0.9.0
+BuildRequires:	libtool >= 2:2.2.6
+BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	shared-mime-info >= 0.50
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 BuildRequires:	zlib-devel
 Requires(post,postun):	glib2 >= 1:2.38.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
+Requires:	exempi >= 1.99.5
+Requires:	gdk-pixbuf2 >= 2.30.0
+Requires:	glib2 >= 1:2.38.0
 Requires:	gsettings-desktop-schemas >= 3.4.0
+Requires:	gtk+3 >= 3.14.0
 Requires:	hicolor-icon-theme
+Requires:	libexif >= 1:0.6.14
+Requires:	librsvg >= 2.36.2
+Requires:	shared-mime-info >= 0.50
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -145,7 +153,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/eog/plugins/libreload.so*
 %{_libdir}/eog/plugins/statusbar-date.plugin
 %attr(755,root,root) %{_libdir}/eog/plugins/libstatusbar-date.so*
-%{_iconsdir}/hicolor/*/*/*
+%{_iconsdir}/hicolor/*x*/apps/eog.png
+%{_iconsdir}/hicolor/scalable/apps/eog-symbolic.svg
 %{_datadir}/%{name}
 %{_datadir}/GConf/gsettings/eog.convert
 %{_datadir}/appdata/eog.appdata.xml
