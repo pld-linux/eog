@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.20.5
+Version:	3.24.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	fc6e611074a71c05d1cedcfb35a3895b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	fc52efe08109c1d0cdfb44d1268cb8d7
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
@@ -24,7 +24,7 @@ BuildRequires:	gnome-common
 BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
-BuildRequires:	gtk+3-devel >= 3.20.0
+BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.16}
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	lcms2-devel >= 2
@@ -49,7 +49,7 @@ Requires:	exempi >= 1.99.5
 Requires:	gdk-pixbuf2 >= 2.30.0
 Requires:	glib2 >= 1:2.42.0
 Requires:	gsettings-desktop-schemas >= 3.4.0
-Requires:	gtk+3 >= 3.20.0
+Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 Requires:	libexif >= 1:0.6.14
 Requires:	librsvg >= 2.36.2
@@ -73,7 +73,7 @@ Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.20.0
+Requires:	gtk+3-devel >= 3.22.0
 
 %description devel
 Header files for eog.
