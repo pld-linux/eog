@@ -6,20 +6,19 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.26.2
+Version:	3.28.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.26/%{name}-%{version}.tar.xz
-# Source0-md5:	a4f5651295f68b28d62e666d81d810b1
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.28/%{name}-%{version}.tar.xz
+# Source0-md5:	0ba26c69809aa01717bc17709b75ee52
+Patch0:		%{name}-gtk-doc.patch
 URL:		http://www.gnome.org/projects/eog/
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.7
-BuildRequires:	glib2-devel >= 1:2.42.0
+BuildRequires:	glib2-devel >= 1:2.54.0
 BuildRequires:	gnome-common
 BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
@@ -28,10 +27,10 @@ BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.16}
 BuildRequires:	lcms2-devel >= 2
 BuildRequires:	libexif-devel >= 1:0.6.14
-BuildRequires:	libjpeg-devel
+BuildRequires:	libjpeg-turbo-devel
 BuildRequires:	libpeas-gtk-devel >= 1.0.0
 BuildRequires:	librsvg-devel >= 2.36.2
-BuildRequires:	libtool >= 2:2.2.6
+BuildRequires:	meson >= 0.44.0
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -46,7 +45,7 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	exempi >= 1.99.5
 Requires:	gdk-pixbuf2 >= 2.36.5
-Requires:	glib2 >= 1:2.42.0
+Requires:	glib2 >= 1:2.54.0
 Requires:	gsettings-desktop-schemas >= 3.4.0
 Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
@@ -97,29 +96,19 @@ Dokumentacja API Eye of GNOME.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%{?with_apidocs:%{__gtkdocize}}
-%{__libtoolize}
-%{__aclocal}
-%{__automake}
-%{__autoheader}
-%{__autoconf}
-%configure \
-	%{__enable_disable apidocs gtk-doc} \
-	--disable-schemas-compile \
-	--disable-silent-rules \
-	--with-html-dir=%{_gtkdocdir}
-%{__make}
+%meson build \
+	-Dgtk_doc=%{?with_apidocs:true}%{!?with_apidocs:false}
+
+%meson_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/eog{/plugins,}/*.la
 install -d $RPM_BUILD_ROOT%{_datadir}/eog/plugins
+
+%meson_install -C build
 
 %find_lang %{name} --with-gnome
 
@@ -156,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/eog-symbolic.svg
 %{_datadir}/%{name}
 %{_datadir}/GConf/gsettings/eog.convert
-%{_datadir}/appdata/eog.appdata.xml
+%{_datadir}/metainfo/eog.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.gschema.xml
 %{_desktopdir}/eog.desktop
