@@ -6,12 +6,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.28.0
+Version:	3.32.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.28/%{name}-%{version}.tar.xz
-# Source0-md5:	0ba26c69809aa01717bc17709b75ee52
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.32/%{name}-%{version}.tar.xz
+# Source0-md5:	c1daf654c4caffd75434f888339dd00d
 Patch0:		%{name}-gtk-doc.patch
 URL:		http://www.gnome.org/projects/eog/
 BuildRequires:	docbook-dtd412-xml
@@ -19,7 +19,6 @@ BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.7
 BuildRequires:	glib2-devel >= 1:2.54.0
-BuildRequires:	gnome-common
 BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
@@ -31,6 +30,7 @@ BuildRequires:	libjpeg-turbo-devel
 BuildRequires:	libpeas-gtk-devel >= 1.0.0
 BuildRequires:	librsvg-devel >= 2.36.2
 BuildRequires:	meson >= 0.44.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -52,8 +52,6 @@ Requires:	hicolor-icon-theme
 Requires:	libexif >= 1:0.6.14
 Requires:	librsvg >= 2.36.2
 Requires:	shared-mime-info >= 0.50
-# sr@Latn vs. sr@latin
-Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -133,22 +131,21 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/eog/girepository-1.0
 %{_libdir}/eog/girepository-1.0/Eog-3.0.typelib
 %dir %{_libdir}/eog/plugins
-# buggy soname generation, uses .so.0.0.0
-%attr(755,root,root) %{_libdir}/eog/libeog.so*
+%attr(755,root,root) %{_libdir}/eog/libeog.so
 %{_libdir}/eog/plugins/fullscreen.plugin
 %attr(755,root,root) %{_libdir}/eog/plugins/libfullscreen.so*
 %{_libdir}/eog/plugins/reload.plugin
 %attr(755,root,root) %{_libdir}/eog/plugins/libreload.so*
 %{_libdir}/eog/plugins/statusbar-date.plugin
 %attr(755,root,root) %{_libdir}/eog/plugins/libstatusbar-date.so*
-%{_iconsdir}/hicolor/*x*/apps/eog.png
-%{_iconsdir}/hicolor/scalable/apps/eog-symbolic.svg
 %{_datadir}/%{name}
 %{_datadir}/GConf/gsettings/eog.convert
-%{_datadir}/metainfo/eog.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.gschema.xml
+%{_datadir}/metainfo/eog.appdata.xml
 %{_desktopdir}/eog.desktop
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.eog.svg
+%{_iconsdir}/hicolor/symbolic/apps/org.gnome.eog-symbolic.svg
 
 %files devel
 %defattr(644,root,root,755)
