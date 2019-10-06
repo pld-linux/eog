@@ -1,19 +1,19 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# disable API documentation
+%bcond_without	apidocs	# API documentation
+%bcond_without	librsvg	# SVG scaling using librsvg
 
 Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.32.2
+Version:	3.34.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.32/%{name}-%{version}.tar.xz
-# Source0-md5:	c1daf654c4caffd75434f888339dd00d
-Patch0:		%{name}-gtk-doc.patch
-URL:		http://www.gnome.org/projects/eog/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.34/%{name}-%{version}.tar.xz
+# Source0-md5:	9a2d6355b431ad809340685da21cb436
+URL:		https://wiki.gnome.org/Apps/EyeOfGnome
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
@@ -28,12 +28,12 @@ BuildRequires:	lcms2-devel >= 2
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libjpeg-turbo-devel
 BuildRequires:	libpeas-gtk-devel >= 1.0.0
-BuildRequires:	librsvg-devel >= 2.36.2
-BuildRequires:	meson >= 0.44.0
+%{?with_librsvg:BuildRequires:	librsvg-devel >= 2.44.0}
+BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	shared-mime-info >= 0.50
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
@@ -50,7 +50,7 @@ Requires:	gsettings-desktop-schemas >= 3.4.0
 Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 Requires:	libexif >= 1:0.6.14
-Requires:	librsvg >= 2.36.2
+%{?with_rsvg:Requires:	librsvg >= 2.44.0}
 Requires:	shared-mime-info >= 0.50
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -94,19 +94,19 @@ Dokumentacja API Eye of GNOME.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %meson build \
-	-Dgtk_doc=%{?with_apidocs:true}%{!?with_apidocs:false}
+	-Dgtk_doc=%{?with_apidocs:true}%{!?with_apidocs:false} \
+	%{!?with_librsvg:-Dlibrsvg=false}
 
-%meson_build -C build
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/eog/plugins
 
-%meson_install -C build
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome
 
