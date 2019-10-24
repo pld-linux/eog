@@ -13,6 +13,7 @@ License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.34/%{name}-%{version}.tar.xz
 # Source0-md5:	f68762ed4cc6306e52cc8528257adf65
+Patch0:		librsvg.patch
 URL:		https://wiki.gnome.org/Apps/EyeOfGnome
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
@@ -28,7 +29,7 @@ BuildRequires:	lcms2-devel >= 2
 BuildRequires:	libexif-devel >= 1:0.6.14
 BuildRequires:	libjpeg-turbo-devel
 BuildRequires:	libpeas-gtk-devel >= 1.0.0
-%{?with_librsvg:BuildRequires:	librsvg-devel >= 2.44.0}
+%{?with_librsvg:BuildRequires:	librsvg-devel >= 2.40.0}
 BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
@@ -94,6 +95,7 @@ Dokumentacja API Eye of GNOME.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson build \

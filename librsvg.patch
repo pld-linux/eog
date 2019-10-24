@@ -1,0 +1,11 @@
+--- eog-3.34.1/meson.build~	2019-10-07 21:08:34.000000000 +0200
++++ eog-3.34.1/meson.build	2019-10-25 00:38:30.775797693 +0200
+@@ -182,7 +182,7 @@
+ # RSVG (optional for scaling svg image)
+ enable_librsvg = get_option('librsvg')
+ if enable_librsvg
+-  common_deps += dependency('librsvg-2.0', version: '>= 2.44.0')
++  common_deps += dependency('librsvg-2.0', version: '>= 2.40.0')
+ endif
+ config_h.set('HAVE_RSVG', enable_librsvg)
+ 
