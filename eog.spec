@@ -7,12 +7,12 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	3.38.0
+Version:	3.38.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/eog/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	e556e96fd4c9345caef718d0837b986b
+Source0:	https://download.gnome.org/sources/eog/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	2bc2aa65cbebd0a0ef37de6445a3b661
 Patch0:		librsvg.patch
 URL:		https://wiki.gnome.org/Apps/EyeOfGnome
 BuildRequires:	docbook-dtd412-xml
@@ -35,7 +35,7 @@ BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	shared-mime-info >= 0.50
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
@@ -84,9 +84,7 @@ Summary:	Eye of GNOME API documentation
 Summary(pl.UTF-8):	Dokumentacja API Eye of GNOME
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 Eye of GNOME API documentation.
