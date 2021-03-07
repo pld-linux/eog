@@ -84,7 +84,7 @@ Summary:	Eye of GNOME API documentation
 Summary(pl.UTF-8):	Dokumentacja API Eye of GNOME
 Group:		Documentation
 Requires:	gtk-doc-common
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 Eye of GNOME API documentation.
