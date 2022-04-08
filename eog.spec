@@ -7,13 +7,13 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	41.1
+Version:	42.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	https://download.gnome.org/sources/eog/41/%{name}-%{version}.tar.xz
-# Source0-md5:	9a0e19d63acddbff9d54d1696f358455
-Patch0:		librsvg.patch
+Source0:	https://download.gnome.org/sources/eog/42/%{name}-%{version}.tar.xz
+# Source0-md5:	f9d0815f6658db80a26c766bdb9adbb1
+Patch0:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/EyeOfGnome
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
@@ -22,16 +22,19 @@ BuildRequires:	gettext-tools >= 0.19.7
 BuildRequires:	glib2-devel >= 1:2.54.0
 BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
-BuildRequires:	gtk+3-devel >= 3.22.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 42
+BuildRequires:	gtk+3-devel >= 3.24.15
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.16}
 BuildRequires:	lcms2-devel >= 2
 BuildRequires:	libexif-devel >= 1:0.6.14
+BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libjpeg-turbo-devel
+BuildRequires:	libpeas-devel >= 1.0.0
 BuildRequires:	libpeas-gtk-devel >= 1.0.0
-BuildRequires:	libportal-devel >= 0.3
-%{?with_librsvg:BuildRequires:	librsvg-devel >= 2.40.0}
-BuildRequires:	meson >= 0.50.0
+BuildRequires:	libportal-devel >= 0.5
+BuildRequires:	libportal-gtk3-devel >= 0.5
+%{?with_librsvg:BuildRequires:	librsvg-devel >= 2.44.0}
+BuildRequires:	meson >= 0.58.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpm-build >= 4.6
@@ -50,9 +53,10 @@ Requires:	exempi >= 1.99.5
 Requires:	gdk-pixbuf2 >= 2.36.5
 Requires:	glib2 >= 1:2.54.0
 Requires:	gsettings-desktop-schemas >= 3.4.0
-Requires:	gtk+3 >= 3.22.0
+Requires:	gtk+3 >= 3.24.15
 Requires:	hicolor-icon-theme
 Requires:	libexif >= 1:0.6.14
+Requires:	libhandy1 >= 1.5.0
 %{?with_rsvg:Requires:	librsvg >= 2.44.0}
 Requires:	shared-mime-info >= 0.50
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -72,7 +76,7 @@ Summary:	Header files for eog
 Summary(pl.UTF-8):	Pliki nagłówkowe eog
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.22.0
+Requires:	gtk+3-devel >= 3.24.15
 
 %description devel
 Header files for eog.
