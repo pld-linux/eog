@@ -7,19 +7,19 @@ Summary:	The Eye of GNOME image viewer
 Summary(pl.UTF-8):	Oko GNOME - przeglądarka obrazków
 Summary(pt_BR.UTF-8):	Visualizador de imagem Eye of GNOME
 Name:		eog
-Version:	43.3
+Version:	44.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	https://download.gnome.org/sources/eog/43/%{name}-%{version}.tar.xz
-# Source0-md5:	b96348816637bdc8b30444e3c37c3e22
+Source0:	https://download.gnome.org/sources/eog/44/%{name}-%{version}.tar.xz
+# Source0-md5:	1302bdb59bd4bfcceda2cbe8292b5fb6
 Patch0:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/EyeOfGnome
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	exempi-devel >= 1.99.5
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.5
 BuildRequires:	gettext-tools >= 0.19.7
-BuildRequires:	glib2-devel >= 1:2.54.0
+BuildRequires:	glib2-devel >= 1:2.73.2
 BuildRequires:	gnome-desktop-devel >= 3.2.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 42
@@ -46,12 +46,12 @@ BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 BuildRequires:	zlib-devel
-Requires(post,postun):	glib2 >= 1:2.54.0
+Requires(post,postun):	glib2 >= 1:2.73.2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	exempi >= 1.99.5
 Requires:	gdk-pixbuf2 >= 2.36.5
-Requires:	glib2 >= 1:2.54.0
+Requires:	glib2 >= 1:2.73.2
 Requires:	gsettings-desktop-schemas >= 3.4.0
 Requires:	gtk+3 >= 3.24.15
 Requires:	hicolor-icon-theme
