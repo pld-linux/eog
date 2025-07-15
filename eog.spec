@@ -102,17 +102,17 @@ Dokumentacja API Eye of GNOME.
 %patch -P0 -p1
 
 %build
-%meson build \
+%meson \
 	-Dgtk_doc=%{?with_apidocs:true}%{!?with_apidocs:false} \
 	%{!?with_librsvg:-Dlibrsvg=false}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/eog/plugins
 
-%ninja_install -C build
+%meson_install
 
 # not supported by glibc (as of 2.37)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
